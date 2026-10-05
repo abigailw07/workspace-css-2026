@@ -1,0 +1,179 @@
+/* Style file for index.html
+ *---- Global variable
+ *---- Layout
+*/
+
+/* 1 ----- Global Variable------*/
+:root {
+    --color-body: hsl(205,78%, 56%);
+    --color-bg-gradient: linear-gradient(to top, pink, purple);
+    --color-bg-seciont: hsl(80,50%,90%);
+    --color-font-body: rgb(95, 4, 4);
+    --color-board-frame: hsl(15, 40%, 33%);
+    --color-top-bar: hsl(240, 100%, 27%)
+    --img-board: url('../img/water.webp');
+    --img-cardback: url('../img/BACK.png');
+    --img-cardfront1: url('../img/Normal_bg.webp');
+    --img-cardfront2: url('../img/Pasisve_bg.webp');
+}
+
+#zen-explanation{--pos-top: 170px; --pos-left:400px; --tilt: -30deg; --front-color: var(--img-cardfront1);}
+#zen-participation{--pos-top: 180px; --pos-left: 50px; --front-color: var(--img-cardfront2);}
+#zen-summary, #zen-preamble, #zen-benefits, #zen-requirements{display: none;}
+
+/* Just Practice */
+body{
+    background-image: var(--color-bg-gradient);
+    height: 100vh;
+    background-repeat: no-repeat;
+    color: var(--color-font-body);
+}
+
+.page-wrapper {
+    background-image: var(--img-board);
+    position: fixed;
+    /* adjust left, top, width, height, make board in the middle */
+    left: 10%;
+    width:80%;
+    height: 80vh;
+    /* Required: get board frame */
+    border: 30px solid var(--color-board-frame);
+    transform-origin: bottom center;
+    transform: perspective(800px) rotateX(30deg) translate(10px, 10px);
+    transform-style: preserve-3d;
+}
+
+.extra1 {
+    position: fixed;
+    bottom: 0;
+    left: 10%;
+    width: 1090px;
+    height: 20px;
+    background-color: hsl(15, 40%, 33%);
+}
+
+/* 2 ----- Layout ----- */
+header abbr{
+    position: relative;
+    top: -10px;
+    font-size: 0.5em;
+}
+
+.intro, .supporting {
+    display: contents;
+}
+
+article {
+    position:absolute;
+    top: var(--pos-top) ;
+    left: var(--pos-left) ;
+    /* Can you rotate at different angle using variable */
+    transform: rotate(var(--tilt, 30deg));
+    background-image: var(--img-cardback);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 90px;
+    height: 150px;
+    overflow: hidden;
+    /* Element Model */
+    padding: 5px 10px 20px 8px;
+     /* Get a border radius to make card look nice */
+    border-radius: 10px;
+    box-shadow: 15px 15px 30px black;
+    transition: all 3s;
+}
+
+article:active {
+    background-image: var(--front-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 50vh;
+    transform-origin: 500px, 80vh;
+    transform: rotateX(-30deg);
+}
+
+/* Everything inside the block */
+article > *{
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+article:active > *{
+    opacity: 1;
+}
+
+/* hide the element for later */
+footer, aside{
+    display: none;
+}
+
+/* Web Font */
+header h1 {
+    font-family: "Playwrite CA Guides", cursive;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'myfont';
+    src: url('../fonts/chunkfive.woff') format('woff'),
+    url('../fonts/chunkfive.svg') format(svg);
+    font-weight: normal;
+    font-style: italic;
+
+}
+
+header h2 {
+    font-family: 'myfont', Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+}
+
+a {
+    text-transform: uppercase;
+}
+
+/* Understand display and visibility 
+/*All paragraphs which are siblings of h3 will have text-transform: uppercase; */
+h3 + p {
+    visibility: hidden;
+}
+
+/* More practice on selector */
+article h3::first-letter{
+    font-size: 3em;
+}
+article:first-child{
+    text-shadow: 0.5em 0.1em 1em black;
+}
+
+p:nth-child(2n){
+    background-color: brown;
+    box-shadow: -25px -25px 50px black;
+}
+
+aside ul {
+    list-style-image: url(../img/star.png);
+}
+
+footer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex; /*make horizontal */
+    gap: 8px;
+    padding: 10px;
+    animation: horizontalmove 5s linear infinite;
+}
+
+footer a{
+    background-color: var(--color-top-bar);
+    text-decoration: none;
+}
+
+@keyframes horizontalmove{
+    0%{ transform: translate(0);}
+    50%{ transform: translate(100%);}
+    100%{ transform: translate(0);}
+}
