@@ -6,7 +6,7 @@
 /* 1 ----- Global Variable------*/
 :root {
     --color-body: hsl(205,78%, 56%);
-    --color-bg-gradient: linear-gradient(to top, pink, purple);
+    --color-bg-gradient: linear-gradient(135deg, #43a1e8, #bff5fe);
     --color-bg-seciont: hsl(80,50%,90%);
     --color-font-body: rgb(95, 4, 4);
     --color-board-frame: hsl(15, 40%, 33%);
@@ -18,15 +18,17 @@
     --img-cardfront2: url('../img/Pasisve_bg.webp');
 }
 
-#zen-explanation{--pos-top: 170px; --pos-left:400px; --tilt: -30deg; --front-color: var(--img-cardfront1);}
-#zen-participation{--pos-top: 180px; --pos-left: 50px; --front-color: var(--img-cardfront2);}
-#zen-summary, #zen-preamble, #zen-benefits, #zen-requirements{display: none;}
+#zen-explanation{--pos-top: 170px; --pos-left:400px; --tilt: -40deg; --front-color: var(--img-cardfront1);z-index: 10;}
+#zen-participation{--pos-top: 180px; --pos-left: 50px; --tilt: -10deg; --front-color: var(--img-cardfront2);z-index: 10;}
+#zen-summary{--pos-top: 70px; --pos-left: 500px; --tilt: -10deg; --front-color: var(--img-cardfront1);z-index: 10;}
+#zen-preamble{--pos-top: 330px; --pos-left: 500px; --tilt: 5deg; --front-color: var(--img-cardfront1);z-index: 10;}
+#zen-benefits{--pos-top: 80px; --pos-left: 700px; --tilt: 10deg; --front-color: var(--img-cardfront1);z-index: 10;}
+#zen-requirements{--pos-top: 70px; --pos-left: 800px; --front-color: var(--img-cardfront1);z-index: 10;}
 
 /* Just Practice */
 body{
-    background-color: var(--color-body);
+    background-color: var(--color-bg-gradient);
     height: 100vh;
-    background-repeat: no-repeat;
     color: var(--color-font-body);
 }
 
@@ -37,22 +39,31 @@ body{
     left: 10%;
     bottom: 20px;
     width: 1000px;
-    height: 80vh;
+    height: 150vh;
     /* Required: get board frame */
-    border: 10px solid var(--color-board-frame);
+    border: 30px solid var(--color-board-frame);
     transform-origin: bottom center;
-    transform: perspective(800px) rotateX(30deg) translate(10px, 10px);
+    transform: perspective(900px) rotateX(30deg) translate(10px, 10px) scale(0.7);
     transform-style: preserve-3d;
+    animation: pictureAnimation 10s infinite;
+    animation-play-state: paused;
+}
+
+
+@keyframes pictureAnimation{
+    0% {margin-left: 0%;}
+    50% {margin-left: -25%;}
+    100% {margin-left: 0%;}
 }
 
 
 .extra1 {
     position: fixed;
     bottom: 0;
-    left: 10%;
-    width: 1000px;
-    height: 20px;
-    background-color: hsl(15, 40%, 33%);
+    left: 23.2%;
+    width: 600px;
+    height: 18.5px;
+    background-color: hsl(16, 40%, 26%);
 }
 
 /* 2 ----- Layout ----- */
@@ -82,7 +93,7 @@ article {
     padding: 5px 10px 20px 8px;
      /* Get a border radius to make card look nice */
     border-radius: 10px;
-    box-shadow: 15px 15px 30px black;
+    box-shadow: 15px 15px 20px black;
     transition: all 3s;
 }
 
@@ -114,6 +125,7 @@ footer, aside{
 /* Web Font */
 header h1 {
     font-family: "Playwrite CA Guides", cursive;
+    font-size: 2em;
     font-style: normal;
     font-weight: 400;
 }
@@ -124,7 +136,6 @@ header h1 {
     url('../fonts/chunkfive.svg') format(svg);
     font-weight: normal;
     font-style: italic;
-
 }
 
 header h2 {
@@ -163,11 +174,12 @@ footer {
     position: fixed;
     top: 0;
     left: 0;
-    width: 90%;
+    width: 100%;
     display: flex; /*make horizontal */
     gap: 8px;
     padding: 10px;
-    animation: horizontalmove 10s linear infinite;
+    animation: horizontalmove 5s linear infinite;
+    animation-play-state: paused;
 }
 
 footer a{
