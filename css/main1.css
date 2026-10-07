@@ -17,12 +17,15 @@
 }
 /* Required-- put them into the right position */
 #zen-explanation{--pos-top: 170px; --pos-left: 400px; --tilt: -40deg; --front-color: var(--img-cardfront1);z-index: 10;}
-#zen-participation{--pos-top: 180px; --pos-left: 50px; --front-color: var(--img-cardfront2); z-index: 20;}
-/*#zen-preamble, #zen-summary, #zen-benefits, #zen-requirements {display: none;}*/
+/*#zen-participation{--pos-top: 180px; --pos-left: 50px; --front-color: var(--img-cardfront2);z-index: 10;}*/
+#zen-participation{--pos-top: 180px; --pos-left: 50px; --front-color: var(--img-cardfront2); z-index: 100;}
+#zen-preamble, #zen-summary, #zen-benefits, #zen-requirements {display: none;}
+/*
 #zen-summary{--pos-top: 70px; --pos-left: 500px; --tilt: -10deg; --front-color: var(--img-cardfront1);z-index: 10;}
-#zen-preamble{--pos-top: 330px; --pos-left: 500px; --tilt: 5deg; --front-color: var(--img-cardfront2);z-index: 10;}
+#zen-preamble{--pos-top: 330px; --pos-left: 500px; --tilt: 5deg; --front-color: var(--img-cardfront1);z-index: 10;}
 #zen-benefits{--pos-top: 80px; --pos-left: 700px; --tilt: 10deg; --front-color: var(--img-cardfront1);z-index: 10;}
-#zen-requirements{--pos-top: 70px; --pos-left: 800px; --front-color: var(--img-cardfront2);z-index: 10;}
+#zen-requirements{--pos-top: 70px; --pos-left: 800px; --front-color: var(--img-cardfront1);z-index: 10;}
+*/
 
 body{
     background-image: var(--color-bg-gradient);
@@ -35,15 +38,15 @@ body{
     background-image: var(--img-board);
     position: fixed;
     /* Required: adjust left, top, width, height, make the board in the middle */
-    /*left:10%; */
+    left: 10%;
     bottom: 20px;
-    width: 1250px;
-    height: 130vh;
+    width: 1000px;
+    height: 80vh;
     /* Required: get the board frame */
-    border: 20px solid var(--color-board-frame);
+    border: 10px solid var(--color-board-frame);
     transform-origin: bottom center;
     /*please adjust the value to make it looks nice */
-    transform: perspective(1000px) rotateX(30deg) translate(10px,10px) scale(0.5);
+    transform: perspective(800px) rotateX(30deg) translate(10px,10px) scale(0.5);
     transform-style: preserve-3d;
     /*animation: pictureAnimation 10s infinite; */
 }
@@ -93,7 +96,7 @@ article{
     transition: all 3s;
 }
 article:active{
-    background-image: var(--front-color); 
+    background-image: var(--front-color);
     background-size: cover;
     background-repeat: no-repeat;
     width: 300px;
@@ -106,7 +109,7 @@ article > *{
     opacity: 0;
     transition: opacity 3s;
 }
-article:active > *{
+article:active >*{
     opacity: 1;
 }
 /* hide the element */
@@ -119,7 +122,6 @@ header h1{
     font-family: "Playwrite BE WAL Guides", cursive;
     font-size: 2em;
 }
-
 @font-face {
     font-family: 'myFont';
     src: url('../fonts/chunkfive.woff') format('woff'),
@@ -127,41 +129,32 @@ header h1{
     font-weight: normal;
     font-style:italic;
 }
-
 header h2{
     font-family: 'myFont', Arial, Helvetica, sans-serif;
     font-size: 1.5em;
 }
-
-a {
+a{
     text-transform: uppercase;
 }
-
 /* Understand display and visibility , sibling selector*/
 /* All paragraphs which are sibling of h3 will have text-transform: uppercase */
-h3 + p {
-    text-transform: uppercase;
+h3 + p{
+    display: none;
 }
-
 /* more practice on selector */
 article h3::first-letter{
     font-size: 3em;
 }
-
 article:first-child{
     text-shadow: 0.5em 0.1em 1em black ;
 }
-
-/*
 p:nth-child(2n){
     background-color: brown;
     box-shadow: -25px -25px 50px black;
 }
-*/
 aside ul{
     list-style-image: url("../img/star.png");
 }
-
 /* style the footer element */
 footer{
     position: fixed;
@@ -184,47 +177,3 @@ footer a{
 50%{ transform: translateX(100%);}
 100%{transform: translateX(0);}
 } */
-
-/* In class css3 grid practice */
-/*
-div{
-  background-color:  hsla(200,50%,70%,0.3);
-}
-
-.wrapper {
-  background-color: white;
-  display: grid;
-  grid-template-columns: 100px  repeat(2, 1fr) 100px;
-  grid-gap: 20px;
-  grid-auto-rows: minmax(100px, auto);
-}
-
-.one{
-  grid-column: 2/4;
-  grid-row: 2/4;
-}
-
-.two{
-  grid-column: 1/4;
-  grid-row: 1/2;
-}
-
-.three{
-  grid-column: 1/2;
-  grid-row: 2/4;
-}
-
-.four{
-  grid-column: 4/4;
-  grid-row: 1/3;
-}
-
-.five{
-  grid-column: 1/4;
-  grid-row: 4/4;
-}
-.six{
-  grid-column: 3/5;
-  grid-row: 3/5; 
-}
-*/
